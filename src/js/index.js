@@ -1,6 +1,7 @@
 'use strict'
 
 import { myFunction3, config } from './config'
+import * as api from './api'
 
 window.MySpace = {
   myFunction2: () => {
@@ -21,3 +22,6 @@ console.log(config)
 MySpace.myFunction2()
 let result = MySpace.myFunction(3)
 console.log(result)
+
+api.testGet()
+api.testPost()

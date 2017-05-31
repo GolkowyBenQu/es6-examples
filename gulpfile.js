@@ -22,7 +22,7 @@ const folder = {
 }
 
 gulp.task('html', () => {
-  const out = folder.build + 'html/'
+  const out = folder.build
   return gulp.src(folder.src + 'html/**/*')
     .pipe(newer(out))
     .pipe(htmlclean())
