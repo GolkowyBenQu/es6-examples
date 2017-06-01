@@ -2,6 +2,7 @@
 
 import { myFunction3, config } from './config'
 import * as api from './api'
+require('./bootstrap')
 
 window.MySpace = {
   myFunction2: () => {

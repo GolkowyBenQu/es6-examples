@@ -21,7 +21,7 @@ const folder = {
   build: 'build/'
 }
 
-gulp.task('html', () => {
+gulp.task('copy:html', () => {
   const out = folder.build
   return gulp.src(folder.src + 'html/**/*')
     .pipe(newer(out))
@@ -29,7 +29,7 @@ gulp.task('html', () => {
     .pipe(gulp.dest(out))
 })
 
-gulp.task('js', ['html'], () => {
+gulp.task('build:js', ['copy:html'], () => {
   const bundler = browserify(folder.src + 'js/index.js').transform(babel)
 
   return bundler.bundle()
@@ -40,14 +40,14 @@ gulp.task('js', ['html'], () => {
     .pipe(source('main.js'))
     .pipe(gulp.dest(folder.build + 'js/'))
 
-});
+})
 
-gulp.task('css', ['html'], () => {
+gulp.task('build:css', ['copy:html'], () => {
   const postCssOpts = [
-    assets({ loadPaths: ['images/'] }),
-    autoprefixer({ browsers: ['last 2 versions', '> 2%'] }),
+    assets({loadPaths: ['images/']}),
+    autoprefixer({browsers: ['last 2 versions', '> 2%']}),
     mqpacker
-  ];
+  ]
 
   postCssOpts.push(cssnano);
 
@@ -60,9 +60,16 @@ gulp.task('css', ['html'], () => {
     }))
     .pipe(postcss(postCssOpts))
     .pipe(gulp.dest(folder.build + 'css/'));
+})
 
-});
+gulp.task('copy:images', () => {
+  gulp.src(folder.src + 'images/**/*')
+    .pipe(gulp.dest(folder.build + 'images'))
 
-gulp.task('run', ['html', 'js', 'css'])
+  gulp.src(folder.src + 'fonts/**/*')
+    .pipe(gulp.dest(folder.build + 'fonts'))
+})
+
+gulp.task('run', ['copy:html', 'build:js', 'build:css', 'copy:images'])
 
 gulp.task('default', ['run'])
