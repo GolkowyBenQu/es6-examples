@@ -70,6 +70,13 @@ gulp.task('copy:images', () => {
     .pipe(gulp.dest(folder.build + 'fonts'))
 })
 
+gulp.task('watch', () => {
+  gulp.watch(folder.src + 'html/**/*', [ 'copy:html' ])
+  gulp.watch(folder.src + 'js/index.js', [ 'build:js' ])
+  gulp.watch(folder.src + 'scss/main.scss', [ 'build:css' ])
+  gulp.watch(folder.src + 'images/**/*', [ 'copy:images' ])
+})
+
 gulp.task('run', ['copy:html', 'build:js', 'build:css', 'copy:images'])
 
 gulp.task('default', ['run'])
