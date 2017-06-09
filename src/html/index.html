@@ -3,88 +3,234 @@
     <link href="/css/main.css" rel="stylesheet"/>
 
     <style>
-        html, body, .container-table {
+        a.nav-expander {
+            background: none repeat scroll 0 0 #000000;
+            color: #FFFFFF;
+            display: block;
+            font-size: 15px;
+            font-weight: 400;
+            height: 50px;
+            margin-right: 0;
+            padding: 1em 1.6em 2em;
+            position: absolute;
+            right: 0;
+            text-decoration: none;
+            text-transform: uppercase;
+            top: 0;
+            transition: right 0.3s ease-in-out 0s;
+            width: 130px;
+            z-index: 12;
+
+            transition: right 0.3s ease-in-out 0s;
+            -webkit-transition: right 0.3s ease-in-out 0s;
+            -moz-transition: right 0.3s ease-in-out 0s;
+            -o-transition: right 0.3s ease-in-out 0s;
+
+        }
+
+        a.nav-expander:hover {
+            cursor: pointer;
+        }
+
+        a.nav-expander.fixed {
+            position: fixed;
+        }
+
+        .nav-expanded a.nav-expander.fixed {
+            right: 20em;
+        }
+
+
+
+
+        nav {
+            background: #2d2f33;
+            display: block;
             height: 100%;
+            overflow: auto;
+            position: fixed;
+            right: -20em;
+            font-size: 15px;
+            top: 0;
+            width: 20em;
+            z-index: 2000;
+
+            transition: right 0.3s ease-in-out 0s;
+            -webkit-transition: right 0.3s ease-in-out 0s;
+            -moz-transition: right 0.3s ease-in-out 0s;
+            -o-transition: right 0.3s ease-in-out 0s;
+
+        }
+        .nav-expanded nav {
+            right: 0;
         }
 
-        .container-table {
-            display: table;
+        body.nav-expanded {
+            margin-left: 0em;
+            transition: right 0.4s ease-in-out 0s;
+            -webkit-transition: right 0.4s ease-in-out 0s;
+            -moz-transition: right 0.4s ease-in-out 0s;
+            -o-transition: right 0.4s ease-in-out 0s;
         }
 
-        .vertical-center-row {
-            display: table-cell;
-            vertical-align: middle;
+        #nav-close {
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-weight: 300;
+            font-size: 24px;
+            padding-right: 10px;
+        }
+
+
+
+        .main-menu {
+            padding-top: 12px;
+        }
+
+        .main-menu li {
+            border-bottom: 1px solid #323949;
+            margin-left: 20px;
+            font-size: 18px;
+            padding: 12px;
+        }
+
+        .main-menu li a {
+            color: #6F7D8C;
+            text-decoration: none;
+        }
+
+        .main-menu li a:hover {
+            color: #FFFFFF;
+            text-decoration: none;
+        }
+
+        .main-menu li .sub-nav {
+            border-bottom: 0px;
+            padding: 4px;
+        }
+
+        .main-menu a .caret {
+            width: 0;
+            height: 0;
+            display: inline-block;
+            vertical-align: top;
+            border-top: 4px solid #4f5963;
+            border-right: 4px solid transparent;
+            border-left: 4px solid transparent;
+            content: "";
+            margin-top: 8px;
+        }
+
+        .main-menu a:hover .caret {
+            border-top-color: #4f5963;
+        }
+
+        .main-menu li.open > a > .caret {
+            border-top: none;
+            border-bottom: 4px solid #4f5963;
+            border-right: 4px solid transparent;
+            border-left: 4px solid transparent;
+        }
+
+        .main-menu li.open > a:hover > .caret {
+            border-bottom-color: #4f5963;
+        }
+
+        .icon:before {
+            font-family: 'FontAwesome';
+            font-style: normal;
+            font-variant: normal;
+            font-weight: normal;
+            line-height: 1;
+            text-transform: none;
+            content: '\f105';
+        }
+
+        .main-menu li > a > span.icon {
+            float: right;
+            margin: 0.1em 1.7em -0.1em 0;
+            opacity: 0;
+            -webkit-transition: all 0.2s ease-in-out;
+            -moz-transition: all 0.2s ease-in-out;
+            -o-transition: all 0.2s ease-in-out;
+            transition: all 0.2s ease-in-out;
+
+        }
+
+        .main-menu li > a:hover > span.icon {
+            float: right;
+            margin: 0.1em 0.8em -0.1em 0;
+            opacity: 1;
         }
     </style>
 </head>
 <body>
+<!--http://blog.themearmada.com/off-canvas-slide-menu-for-bootstrap/-->
+<nav>
+    <ul class="list-unstyled main-menu">
 
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Brand</a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">Link</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">One more separated link</a></li>
-                    </ul>
-                </li>
+        <!--Include your navigation here-->
+        <li class="text-right"><a href="#" id="nav-close">X</a></li>
+        <li><a href="#">Menu One <span class="icon"></span></a></li>
+        <li><a href="#">Menu Two <span class="icon"></span></a></li>
+        <li><a href="#">Menu Three <span class="icon"></span></a></li>
+        <li><a href="#">Dropdown</a>
+            <ul class="list-unstyled">
+                <li class="sub-nav"><a href="#">Sub Menu One <span class="icon"></span></a></li>
+                <li class="sub-nav"><a href="#">Sub Menu Two <span class="icon"></span></a></li>
+                <li class="sub-nav"><a href="#">Sub Menu Three <span class="icon"></span></a></li>
+                <li class="sub-nav"><a href="#">Sub Menu Four <span class="icon"></span></a></li>
+                <li class="sub-nav"><a href="#">Sub Menu Five <span class="icon"></span></a></li>
             </ul>
-            <form class="navbar-form navbar-left">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
-                </div>
-                <button type="submit" class="btn btn-default">Submit</button>
-            </form>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Link</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+        </li>
+        <li><a href="#">Menu Four <span class="icon"></span></a></li>
+        <li><a href="#">Menu Five <span class="icon"></span></a></li>
+    </ul>
 </nav>
 
-<div class="container container-table">
-    <div class="row vertical-center-row">
-        <div class="text-center col-md-4 col-md-offset-4" style="background:red">TEXT</div>
+<div class="navbar navbar-inverse navbar-fixed-top">
+
+    <!--Include your brand here-->
+    <a class="navbar-brand" href="#">Off Canvas Menu</a>
+    <div class="navbar-header pull-right">
+        <a id="nav-expander" class="nav-expander fixed">
+            MENU &nbsp;<i class="fa fa-bars fa-lg white"></i>
+        </a>
     </div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/main.js"></script>
 <script>
-  $('#myModal').on('shown.bs.modal', function () {
-    $('#myInput').focus()
-  })
+  $(document).ready(function(){
+
+    //Navigation Menu Slider
+    $('#nav-expander').on('click',function(e){
+      e.preventDefault();
+      $('body').toggleClass('nav-expanded');
+    });
+    $('#nav-close').on('click',function(e){
+      e.preventDefault();
+      $('body').removeClass('nav-expanded');
+    });
+
+    // Initialize navgoco with default options
+    $(".main-menu").navgoco({
+      caret: '<span class="caret"></span>',
+      accordion: false,
+      openClass: 'open',
+      save: true,
+      cookie: {
+        name: 'navgoco',
+        expires: false,
+        path: '/'
+      },
+      slide: {
+        duration: 300,
+        easing: 'swing'
+      }
+    });
+
+  });
 </script>
 </body>
 </html>
