@@ -4,12 +4,24 @@
     <!--http://jsfiddle.net/tvshajeer/m429qy2z/-->
 </head>
 <body>
+<!--http://blog.themearmada.com/off-canvas-slide-menu-for-bootstrap/-->
+<div class="sidebar">
+    <ul class="list-unstyled main-menu">
+
+        <!--Include your navigation here-->
+        <li class="text-right"><a href="#" class="nav-close">X</a></li>
+        <li><a href="#">Menu One</a></li>
+        <li><a href="#">Menu Two</a></li>
+    </ul>
+</div>
+
 
 <nav class="navbar navbar-fixed-top">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#yo">
+            <button type="button" class="navbar-toggle collapsed nav-expander"
+                    data-toggle="collapse" data-target="#yo">
                 P
             </button>
             <p class="navbar-text navbar-counter">2 / 3</p>
@@ -24,22 +36,14 @@
 
 
         <div class="collapse navbar-collapse" id="yo">
-            <button type="button" class="navbar-toggle-always collapsed" data-toggle="collapse" data-target="#left" aria-expanded="false" aria-controls="navbar">
+            <button id="nav-expander" type="button" class="hidden-xs navbar-toggle-always collapsed nav-expander"
+                    data-toggle="collapse" data-target="#left" aria-expanded="false" aria-controls="navbar">
                 P
             </button>
 
             <div class="navbar-inner hidden-xs">
                 test a
             </div>
-        </div>
-
-        <div class="collapse" id="left" style="position:absolute;z-index:100">
-            <ul class="nav nav-tabs">
-                <li><a href="#">a</a></li>
-                <li><a href="#">b</a></li>
-                <li><a href="#">c</a></li>
-                <li><a href="#">d</a></li>
-            </ul>
         </div>
     </div>
 </nav>
