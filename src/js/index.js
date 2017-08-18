@@ -2,6 +2,7 @@
 
 import { myFunction3, config } from './config'
 import * as api from './api'
+import * as themeRoller from './theme-roller'
 require('./bootstrap')
 
 window.MySpace = {
@@ -37,4 +38,6 @@ $(document).ready(function(){
     e.preventDefault();
     $('body').removeClass('nav-expanded');
   });
+
+  themeRoller.themeRoller();
 });
